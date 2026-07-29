@@ -16,7 +16,7 @@ Set Height 520
 Set Padding 24
 Set Theme "Catppuccin Mocha"
 
-Type "python demo.py"
+Type "python3 demo.py"
 Sleep 600ms
 Enter
 Sleep 3s
