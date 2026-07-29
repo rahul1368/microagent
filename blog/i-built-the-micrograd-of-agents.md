@@ -1,6 +1,6 @@
 ---
 title: Every AI agent framework hides the same 5 ideas. Here they are in 200 lines.
-published: false
+published: true
 description: A tiny from-scratch agent framework in about 200 lines, so you can actually see how agents work.
 tags: ai, python, machinelearning, tutorial
 cover_image: https://raw.githubusercontent.com/rahul1368/microagent/main/assets/demo.gif
