@@ -1,5 +1,5 @@
 ---
-title: I built the micrograd of AI agents
+title: Every AI agent framework hides the same 5 ideas. Here they are in 200 lines.
 published: false
 description: A tiny from-scratch agent framework in about 200 lines, so you can actually see how agents work.
 tags: ai, python, machinelearning, tutorial
@@ -7,7 +7,7 @@ cover_image: https://raw.githubusercontent.com/rahul1368/microagent/main/assets/
 canonical_url:
 ---
 
-Every agent framework hides the same five ideas. I rebuilt them in about 200 lines of Python so you can read the whole thing in one sitting and really understand it.
+So I rebuilt them from scratch. A tiny framework with no dependencies, small enough to read in one sitting and really understand.
 
 ![A support agent handling a refund request, printed as a plain story](https://raw.githubusercontent.com/rahul1368/microagent/main/assets/demo.gif)
 
@@ -21,7 +21,7 @@ So I did the thing that worked so well for me with neural networks. If you have 
 
 I wanted the same thing for agents. So I built [microagent](https://github.com/rahul1368/microagent).
 
-## The trick: stop thinking about AI for a minute
+## The trick: picture a small office
 
 The fastest way to understand an agent is to picture a small office.
 
@@ -148,7 +148,7 @@ you asked: "Can I get a refund for order A1234? It arrived broken."
 
 Notice the third step. A risky action waited for a human to approve. That is not a special feature. It is a tool that wraps another tool.
 
-## The scary stuff is not new pieces
+## The hard parts are not new pieces
 
 This is the part I did not expect, and it is the best reason to build small.
 
