@@ -41,6 +41,8 @@ class Message:
     name: str | None = None
 ```
 
+In plain words, a note only needs three things. Who wrote it (role), what it says (content), and an optional label for which coworker it came from (name).
+
 It is frozen, which is a fancy word for written in pen. Once a note exists, it never changes. That matters in a second.
 
 ## 2. Context, the notebook
@@ -62,6 +64,8 @@ class Context:
         return self.messages[-1] if self.messages else None
 ```
 
+Two small methods do the work. `add` takes your new note and hands back a brand new notebook with it added at the end, so the old one is never touched. `last` just peeks at the most recent note.
+
 Because the notebook only grows, the full story of what happened is always right there. You can read it back, replay it, and debug it. Nothing is hidden. Memory is not a feature we add later. It is just the notebook we never erase.
 
 ## 3. Tool, a coworker you can call
@@ -82,6 +86,8 @@ class Tool:
         return str(self.fn(**kwargs))
 ```
 
+In plain words, a tool has a name so the brain can ask for it, a description so the brain knows what it is for, the function to actually run, and a flag that says whether calling it ends the job.
+
 One tool is special. It is the coworker whose job is to say we are done, the answer is X. We mark that one as terminal.
 
 ## 4. Policy, the brain
@@ -97,6 +103,8 @@ class Action:
     args: dict = field(default_factory=dict)
     reasoning: str = ""
 ```
+
+Read that as the brain pointing at one coworker and saying call this one, with these details. The reasoning is a short note about why, so the story stays easy to follow later.
 
 Here is the most important idea in the whole project. The brain is swappable. Today you can write it as a few lines of plain Python, no AI at all, just to watch the office run. Tomorrow you swap in a real language model, or even a small neural network you trained yourself. The office does not change. Only the brain does.
 
@@ -128,11 +136,30 @@ class Agent:
         return ctx
 ```
 
+Read the loop as one trip around, in four small steps.
+
+1. Ask the brain what to do next. It looks at the notebook and picks a coworker.
+2. Call that coworker and get a result back.
+3. Write both the decision and the result into the notebook.
+4. If that coworker was the one that ends the job, stop. If not, go around again.
+
 That loop is the entire engine of every AI agent you have heard of. Decide, act, write it down, repeat. Big frameworks dress it up, but underneath, this is it.
+
+## Quick recap of the five pieces
+
+Before we run it, here are all five in one place.
+
+- **Message**, a single note.
+- **Context**, the notebook you never erase.
+- **Tool**, a coworker you can call.
+- **Policy**, the brain that picks the next move.
+- **Agent**, the assistant that runs the loop until the job is done.
 
 ## Watch it do real work
 
 Here is a support agent handling a refund. It looks up the order, checks the policy, issues the refund after a human signs off, and replies to the customer. Same five pieces, pointed at real tools.
+
+Read it top to bottom like a story. Each thought line is the brain deciding, and each arrow line is a coworker handing back a result.
 
 ```
 you asked: "Can I get a refund for order A1234? It arrived broken."
