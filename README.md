@@ -30,6 +30,26 @@ And one action, the loop, which is just this:
 decide (Policy)  ->  act (Tool)  ->  add the result to Context  ->  repeat
 ```
 
+Here is the whole office in one picture. The Agent keeps looping until the job
+is done. The brain picks a worker, the worker hands back a result, and the
+result goes into the notebook that everyone reads from.
+
+```
+                  +--------------------------------------------------+
+                  |                     AGENT                        |
+                  |          loops until the job is done             |
+                  |                                                  |
+   you ask  --->  |    +---------+   picks     +----------+          |  --->  answer
+                  |    | POLICY  | ----------> |   TOOL   |          |
+                  |    | (brain) |  an action  | (worker) |          |
+                  |    +----^----+             +-----+----+          |
+                  |         |     result written to     |            |
+                  |         +------- CONTEXT <-----------+            |
+                  |             the notebook you never erase,        |
+                  |             made of MESSAGES                     |
+                  +--------------------------------------------------+
+```
+
 ## New here? Build it yourself first
 
 The fastest way to understand this is to build it from nothing. Open
@@ -52,9 +72,11 @@ pip install -e ".[dev]"
 ```python
 from microagent import Agent, Action, Context, FunctionPolicy, final_answer_tool, tool
 
+
 @tool(description="Multiply two integers a and b.")
 def multiply(a: int, b: int) -> int:
     return a * b
+
 
 def brain(ctx: Context, tools):
     last = ctx.last()
@@ -62,14 +84,16 @@ def brain(ctx: Context, tools):
         return Action("final_answer", {"answer": f"= {last.content}"})
     return Action("multiply", {"a": 6, "b": 7})
 
+
 agent = Agent(FunctionPolicy(brain), tools=[multiply, final_answer_tool()])
-print(agent.answer("6 times 7?"))   # -> "= 42"
+print(agent.answer("6 times 7?"))  # -> "= 42"
 ```
 
 The brain above is plain Python, so it runs with no LLM and no network. To give it a real brain, you swap in one object. See [`examples/05_llm_agent.py`](examples/05_llm_agent.py):
 
 ```python
 from microagent.adapters.ollama import OllamaPolicy
+
 agent = Agent(OllamaPolicy(model="llama3.1"), tools=[multiply, final_answer_tool()])
 ```
 
@@ -103,7 +127,7 @@ None of these needed a sixth building block. See [`DESIGN.md`](DESIGN.md) for th
 ## What this project does not try to do
 
 - It does not compete with production frameworks. Those building blocks are already settled, and this repo says so plainly.
-- No streaming, no async, no saving state, no retries. Those are good exercises, not the point here.
+- The core stays tiny. It does not build in streaming, async, saved state, retries, or evaluation. Instead, [`notes/`](notes/) shows the smallest way each of those plugs on top, taught as chapters, not shipped as features.
 - The point is simple. Read every line, understand every part, then go build the real thing knowing what is underneath it.
 
 ## License
