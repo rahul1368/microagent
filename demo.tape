@@ -10,13 +10,13 @@
 
 Output assets/demo.gif
 
-Set FontSize 20
-Set Width 1100
-Set Height 520
+Set FontSize 18
+Set Width 1320
+Set Height 380
 Set Padding 24
 Set Theme "Catppuccin Mocha"
 
 Type "python3 demo.py"
 Sleep 600ms
 Enter
-Sleep 3s
+Sleep 4s

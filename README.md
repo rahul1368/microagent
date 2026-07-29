@@ -8,7 +8,7 @@
 
 Five building blocks. About 200 lines of core code. Zero runtime dependencies.
 
-![A microagent run printed as a plain story: the question, the brain's thoughts, each tool result, and the final answer](assets/demo.gif)
+![A support agent handling a refund request: it looks up the order, checks the policy, issues the refund after a human signs off, and replies to the customer](assets/demo.gif)
 
 > This is not a production framework. For production, use [LangGraph](https://github.com/langchain-ai/langgraph) or the [OpenAI Agents SDK](https://github.com/openai/openai-agents-python). microagent is here to teach the ideas that sit underneath those tools, the same way [micrograd](https://github.com/karpathy/micrograd) teaches the idea underneath PyTorch without trying to replace it.
 
