@@ -1,5 +1,9 @@
 # microagent
 
+[![CI](https://github.com/rahul1368/microagent/actions/workflows/ci.yml/badge.svg)](https://github.com/rahul1368/microagent/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 **The micrograd of AI agents.** A tiny, from-scratch agent framework with no dependencies. Small enough to read in one sitting and really understand.
 
 Five building blocks. About 200 lines of core code. Zero runtime dependencies.
@@ -25,6 +29,15 @@ And one action, the loop, which is just this:
 ```
 decide (Policy)  ->  act (Tool)  ->  add the result to Context  ->  repeat
 ```
+
+## New here? Build it yourself first
+
+The fastest way to understand this is to build it from nothing. Open
+[`notebooks/build_microagent_from_scratch.py`](notebooks/build_microagent_from_scratch.py).
+It rebuilds all five pieces one at a time, using the picture of a small office
+(notes, a notebook, coworkers, a brain, and an assistant who keeps working), and
+runs at every step. After that, [`docs/reading-order.md`](docs/reading-order.md)
+walks you through the source in the right order.
 
 ## Install
 
