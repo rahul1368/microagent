@@ -1,6 +1,6 @@
 """Tests for the trace reader."""
 
-from microagent import Action, Agent, FunctionPolicy, tool, final_answer_tool
+from microagent import Action, Agent, FunctionPolicy, final_answer_tool, tool
 from microagent.trace import render
 
 

@@ -22,7 +22,7 @@ classifiers = [
 dependencies = []  # zero runtime dependencies — that is the whole point.
 
 [project.optional-dependencies]
-dev = ["pytest>=8"]
+dev = ["pytest>=8", "ruff>=0.6"]
 
 [project.urls]
 Homepage = "https://github.com/rahul1368/microagent"
@@ -33,3 +33,11 @@ packages = ["src/microagent"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

@@ -9,7 +9,6 @@ from microagent import (
     Agent,
     Context,
     FunctionPolicy,
-    Message,
     final_answer_tool,
     tool,
     with_approval,

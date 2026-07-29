@@ -16,7 +16,7 @@ the office stays the same.
 Run:  python notes/04_prompt_techniques.py
 """
 
-from microagent import Context, Message, Tool, final_answer_tool, tool
+from microagent import Context, Message, final_answer_tool, tool
 
 
 @tool(description="Multiply two integers a and b.")
@@ -48,7 +48,7 @@ def few_shot_prompt(ctx: Context, tools) -> str:
         f"{tool_list(tools)}\n\n"
         "Example:\n"
         "Question: what is 2 times 5\n"
-        'Answer: call multiply with a=2, b=5\n\n'
+        "Answer: call multiply with a=2, b=5\n\n"
         f"Question: {ctx.last().content}\n"
         "Answer:"
     )

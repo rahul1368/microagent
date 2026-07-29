@@ -14,8 +14,8 @@ Composition, not a new concept, the way ``nn.Module`` nests inside ``nn.Module``
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from .context import Context
 from .message import ASSISTANT, SYSTEM, TOOL, USER, Message
@@ -59,8 +59,7 @@ class Agent:
         tool = self.tools.get(action.tool)
         if tool is None:
             observation = (
-                f"[error] unknown tool '{action.tool}'. "
-                f"available tools: {sorted(self.tools)}"
+                f"[error] unknown tool '{action.tool}'. available tools: {sorted(self.tools)}"
             )
             terminal = False
         else:

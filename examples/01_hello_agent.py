@@ -7,7 +7,7 @@ but the Agent, the loop, and the primitives are identical either way.
 Run:  python examples/01_hello_agent.py
 """
 
-from microagent import Agent, Context, FunctionPolicy, Tool, final_answer_tool
+from microagent import Agent, Context, FunctionPolicy, final_answer_tool
 
 
 def build() -> Agent:

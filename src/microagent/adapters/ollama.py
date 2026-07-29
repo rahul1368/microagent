@@ -18,8 +18,9 @@ from __future__ import annotations
 import json
 import urllib.error
 import urllib.request
+from collections.abc import Mapping
 from dataclasses import dataclass
-from typing import Any, Mapping
+from typing import Any
 
 from ..context import Context
 from ..message import ASSISTANT, SYSTEM, TOOL, USER
@@ -40,9 +41,7 @@ Call the terminal tool (e.g. "final_answer") when you have the answer."""
 def _role_for_ollama(role: str) -> str:
     # Ollama's chat API understands user/assistant/system, map tool -> user
     # so observations are visible to the model as fresh input.
-    return {USER: "user", ASSISTANT: "assistant", SYSTEM: "system", TOOL: "user"}.get(
-        role, "user"
-    )
+    return {USER: "user", ASSISTANT: "assistant", SYSTEM: "system", TOOL: "user"}.get(role, "user")
 
 
 def _extract_json(text: str) -> dict[str, Any]:

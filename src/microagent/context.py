@@ -10,8 +10,8 @@ reasoning is preserved, inspectable, and replayable.
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Iterator
 
 from .message import Message
 
@@ -22,7 +22,7 @@ class Context:
 
     messages: tuple[Message, ...] = ()
 
-    def add(self, *msgs: Message) -> "Context":
+    def add(self, *msgs: Message) -> Context:
         """Return a new Context with ``msgs`` appended. The original is unchanged."""
         return Context(self.messages + tuple(msgs))
 
@@ -31,7 +31,7 @@ class Context:
         return self.messages[-1] if self.messages else None
 
     @classmethod
-    def of(cls, *msgs: Message) -> "Context":
+    def of(cls, *msgs: Message) -> Context:
         """Build a Context directly from some Messages."""
         return cls(tuple(msgs))
 

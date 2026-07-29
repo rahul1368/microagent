@@ -1,5 +1,7 @@
 """Unit tests for the individual primitives."""
 
+from dataclasses import FrozenInstanceError
+
 import pytest
 
 from microagent import (
@@ -15,7 +17,7 @@ from microagent import (
 
 def test_message_is_immutable():
     m = Message("user", "hi")
-    with pytest.raises(Exception):
+    with pytest.raises(FrozenInstanceError):
         m.content = "bye"  # frozen dataclass
 
 

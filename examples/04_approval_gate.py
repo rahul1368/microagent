@@ -7,7 +7,15 @@ exactly the layer that autonomous "act on your behalf" agents tend to skip.
 Run:  python examples/04_approval_gate.py
 """
 
-from microagent import Action, Agent, Context, FunctionPolicy, Tool, final_answer_tool, tool, with_approval
+from microagent import (
+    Action,
+    Agent,
+    Context,
+    FunctionPolicy,
+    final_answer_tool,
+    tool,
+    with_approval,
+)
 
 
 @tool(description="Permanently delete a file. DANGEROUS.")

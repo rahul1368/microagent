@@ -8,7 +8,7 @@ decide -> act -> fold observation back into Context -> decide again.
 Run:  python examples/02_tool_use.py
 """
 
-from microagent import Action, Agent, Context, FunctionPolicy, Tool, final_answer_tool, tool
+from microagent import Action, Agent, Context, FunctionPolicy, final_answer_tool, tool
 
 
 @tool(description="Multiply two integers a and b.")

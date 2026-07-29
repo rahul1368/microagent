@@ -44,7 +44,7 @@ class AsyncAgent:
     async def run(self, user_input: str) -> Context:
         ctx = Context().add(Message("user", user_input))
         for _ in range(self.max_steps):
-            action = self.brain(ctx)              # deciding stays instant
+            action = self.brain(ctx)  # deciding stays instant
             tool = self.tools[action["tool"]]
             result = await tool(**action["args"])  # the only change: await
             ctx = ctx.add(Message("tool", result, name=action["tool"]))
